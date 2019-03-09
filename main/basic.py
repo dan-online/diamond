@@ -13,6 +13,8 @@ def lex(filecontents):
     state = 0
     isexpr = 0
     varstarted = 0
+    func = ""
+    isfunc = 0
     var = ""
     string = ""
     expr = ""
@@ -56,10 +58,26 @@ def lex(filecontents):
                      varstarted = 0
             var += tok
             tok = ""
+        #Basis for functions
+        #unfinished
+        elif tok == "!" and state == 0:
+            isfunc = 1
+            func += tok
+            tok = ""
+        elif isfunc == 1:
+            if tok == "<" or tok == ">":
+                if func != "":
+                    print(func)
+                    func = ""
+                    isfunc = 0
+            func += tok
+            tok = ""
+
         elif tok == "print:":
             #print("print")
             tokens.append("PRINT")
             tok = ""
+
 
         elif tok == "0" or tok == "1" or tok == "2" or tok == "3" or tok == "4" or tok == "5" or tok == "6" or tok == "7" or tok == "8" or tok == "9":
             expr += tok
@@ -79,10 +97,10 @@ def lex(filecontents):
         elif state == 1:
             string += tok
             tok = ""
-    #print(tokens)
+    print(tokens)
     #print(symbols)
-    #return ""
-    return tokens
+    return ""
+    #return tokens
 def doPRINT(num):
     if num[0:6] == "STRING":
         print(num[8:])
