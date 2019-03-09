@@ -1,8 +1,8 @@
 # Checklist
-Print [x]
-numbers/expressions [x]
-variables [x]
-  -assignment [x]
-  -retrieve/output [x]
-if/else []
-functions []
+Print [x]\n
+numbers/expressions [x]\n
+variables [x]\n
+  -assignment [x]\n
+  -retrieve/output [x]\n
+if/else []\n
+functions []\n
