@@ -1,4 +1,4 @@
 ?number = 5 + 1
 ?string = "help"
-print: ?number
 print: ?string
+print: ?number
