@@ -1,3 +1,4 @@
-?test = 5 + 1
-print: ?test
-print: "help"
+?number = 5 + 1
+?string = "help"
+print: ?number
+print: ?string
