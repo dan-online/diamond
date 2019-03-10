@@ -3,3 +3,4 @@
 
 print: ?var2
 print: 2
+print: ?var1
