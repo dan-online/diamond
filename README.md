@@ -6,7 +6,7 @@ Made as a fun way to learn python :)
 A Project by Fallen Angel Lucifer and [DanCodes](https://mayorchano.me)
 
 ## Contribution
-If you want to contribute, message us on discord  
+If you want to contribute, message us on discord or email [DanCodes](mailto:danthecoder@mayorchano.me)
 
 ## **Requirements**
   - A knowledge of Python, tutorials can be found [here](https://www.tutorialspoint.com/python/)  
