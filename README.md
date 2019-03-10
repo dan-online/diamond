@@ -14,3 +14,7 @@ If you want to become a collaborator, message us on discord or email [DanCodes](
   - Your code should add functionality or patch a bug in the code
   - Your code must be approved by a Developer
   
+## Testing
+Run ``chmod +x ./main/tests/test.sh`` to initialize
+
+Run ``./main/tests/test.sh`` to test the test.dia file
