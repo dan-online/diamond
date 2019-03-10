@@ -2,3 +2,4 @@
 ?var2 = 2+3
 
 print: ?var2
+print: 2
