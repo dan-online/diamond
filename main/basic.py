@@ -1,6 +1,5 @@
 from sys import *
 
-
 tokens = []
 symbols = {}
 
