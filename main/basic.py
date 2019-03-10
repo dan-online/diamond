@@ -22,6 +22,7 @@ def lex(filecontents):
     filecontents = list(filecontents)
     for char in filecontents:
         tok += char
+        #print(tok)
         if tok == " ":
             if state == 0:
                 tok = ""
@@ -38,7 +39,9 @@ def lex(filecontents):
                 tokens.append("VAR:" + var)
                 var = ""
                 varstarted = 0
+
             tok = ""
+
         elif tok == "=" and state == 0:
             if var != "":
                 tokens.append("VAR:" + var)
@@ -58,24 +61,24 @@ def lex(filecontents):
                      varstarted = 0
             var += tok
             tok = ""
+
+        elif tok == "print:":
+            #print("print")
+            tokens.append("PRINT")
+            tok = ""
         #Basis for functions
-        #unfinished
-        elif tok == "!" and state == 0:
+        #unfinished (Currently not working)
+        elif tok == "{" and state == 0:
             isfunc = 1
             func += tok
             tok = ""
         elif isfunc == 1:
             if tok == "<" or tok == ">":
                 if func != "":
-                    print(func)
+                    tokens.append("CODE:" + func)
                     func = ""
                     isfunc = 0
             func += tok
-            tok = ""
-
-        elif tok == "print:":
-            #print("print")
-            tokens.append("PRINT")
             tok = ""
 
 
@@ -99,8 +102,8 @@ def lex(filecontents):
             tok = ""
     print(tokens)
     #print(symbols)
-    return ""
-    #return tokens
+    #return ""
+    return tokens
 def doPRINT(num):
     if num[0:6] == "STRING":
         print(num[8:])
@@ -117,9 +120,45 @@ def getVARIABLE(varname):
     #print(varname)
     if varname in symbols:
         print(symbols[varname])
+        return ""
         #return symbols[varname]
     else:
         return "TypeError: Undefined Variable"
+evaledarray = []
+def evalCODE(code):
+
+    code = code[6:]
+    txt = code.find("}")
+    eol = code.find(";")
+    line = code[:eol]
+    count = code.count(";")
+    line = code.split(";")
+    i = 0
+    while i <= len(line) - 1:
+        if line[i] != "}":
+            if line[i].count("\"") > 0:
+                end = line[i][7:].find("\"")
+                txt = line[i][7:]
+                evaledarray.append(txt[:end])
+            elif line[i].count("+") > 0 or line[i].count("-") > 0 or line[i].count("*") > 0 or line[i].count("/") > 0:
+                txt = eval(line[i][6:])
+                evaledarray.append(txt)
+            else:
+                evaledarray.append(line[i][6:])
+        i+=1
+        return ""
+    #if eol != 0:
+    #    line2 = code[eol:]
+    #    txt = line2.find("}")
+    #    line2 = line2[1:txt]
+    #    line2 = line2[7:]
+    #    line1 = code[:eol]
+    #    line1 = line1[7:]
+    #    block = line1 + "\n" + line2
+    #    print(block)
+    #else:
+    #    print(line1)
+    return evaledarray
 def parse(toks):
     i = 0
     while(i < len(toks)):
@@ -132,9 +171,9 @@ def parse(toks):
             elif toks[i+1][0:4] == "EXPR":
                 print(evalEXPRESSION(toks[i+1]))
             elif toks[i+1][0:3] == "VAR":
-                getVARIABLE(toks[i+1][4:])
+                print(getVARIABLE(toks[i+1][4:]))
             i+=2
-        elif toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:6] == "VAR EQUALS STRING" or toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:3] == "VAR EQUALS NUM" or toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:4] == "VAR EQUALS EXPR":
+        elif toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:6] == "VAR EQUALS STRING" or toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:3] == "VAR EQUALS NUM" or toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:4] == "VAR EQUALS EXPR" or toks[i][0:3] + " " + toks[i+1] + " " + toks[i+2][0:4] == "VAR EQUALS CODE":
             if toks[i+2][0:6] == "STRING":
                 doASSIGN(toks[i][4:],  toks[i+2][8:])
             if toks[i+2][0:3] == "NUM":
@@ -142,6 +181,8 @@ def parse(toks):
             if toks[i+2][0:4] == "EXPR":
                 #print(toks[i+2])
                 doASSIGN(toks[i][4:], evalEXPRESSION(toks[i+2]))
+            if toks[i+2][0:4] == "CODE":
+                doASSIGN(toks[i][4:], evalCODE(toks[i+2]))
             i+=3
             #print(symbols)
         #i+=1
