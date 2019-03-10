@@ -4,3 +4,4 @@
 print: ?var2
 print: 2
 print: ?var3
+print: "ping"
