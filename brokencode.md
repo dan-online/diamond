@@ -1,6 +1,7 @@
 #This is where code that does not work but can offer functionality goes
 
 **LEXER CODE**
+```
 elif tok == "call:":
         tokens.append("CALL")
         tok = ""
@@ -16,6 +17,7 @@ elif tok == "end":
   elif tok == "do":
       tokens.append("DO")
       tok = ""
+```
 
 
 
