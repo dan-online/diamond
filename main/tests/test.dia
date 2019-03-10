@@ -1,3 +1,4 @@
 ?number = "test"
 print: "test"
 print: ?number
+print: 1 + 2
