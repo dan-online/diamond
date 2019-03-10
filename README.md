@@ -17,4 +17,4 @@ If you want to become a collaborator, message us on discord or email [DanCodes](
 ## Testing
 Run ``chmod +x ./main/tests/test.sh`` to initialize
 
-Run ``./main/tests/test.sh`` to test the test.dia file
+Run ``cd main/tests; ./test.sh`` to run tests
