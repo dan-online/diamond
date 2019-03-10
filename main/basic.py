@@ -116,7 +116,7 @@ def parse(toks):
         #print(toks[i]) 
         if toks[i] + " " + toks[i+1][0:6] == "INPUT STRING":
             inp = input(toks[i+1][8:] + ": ")
-            doASSIGN("?invar", inp)
+            doASSIGN("?stdin", inp)
             #print(symbols)
             i+=2
        
