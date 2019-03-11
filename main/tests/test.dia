@@ -1,3 +1,2 @@
 input: "What is your name"
-print: "Hello"
-print: ?invar
+print: "hello" | ?stdin
