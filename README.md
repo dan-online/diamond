@@ -10,6 +10,7 @@ If you want to become a collaborator, message us on discord or email [DanCodes](
 
 ## Contribute **Requirements**
   - A knowledge of Python, tutorials can be found [here](https://www.tutorialspoint.com/python/)  
+  - Any edits should be made to the beta branch in a Pull Request which will be reviewed by a Dev
   - You must have tested your code previously and it must work
   - Your code should add functionality or patch a bug in the code
   - Your code must be approved by a Developer
@@ -17,4 +18,4 @@ If you want to become a collaborator, message us on discord or email [DanCodes](
 ## Testing
 Run ``chmod +x ./main/tests/test.sh`` to initialize
 
-Run ``./main/tests/test.sh`` to test the test.dia file
+Run ``cd main/tests; ./test.sh`` to run tests
