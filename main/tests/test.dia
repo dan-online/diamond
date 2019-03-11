@@ -1,4 +1,2 @@
 input: "What is your name"
-print: "Hello"
-print: ?stdin
-print: 1
+print: "hello" | ?stdin
