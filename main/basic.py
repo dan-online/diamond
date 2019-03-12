@@ -128,6 +128,7 @@ def parse(toks):
             doASSIGN("?stdin", inp)
             #print(symbols)
             i+=2
+        
         elif toks[i] + " " + toks[i+1][0:6] == "PRINT STRING" or toks[i] + " " + toks[i+1][0:3] == "PRINT NUM" or toks[i] + " " + toks[i+1][0:4] == "PRINT EXPR" or toks[i] + " " + toks[i+1][0:3] == "PRINT VAR":
             if toks[i+1][0:6] == "STRING":
                 doPRINT(toks[i+1])
@@ -138,15 +139,6 @@ def parse(toks):
             elif toks[i+1][0:3] == "VAR":
                 print(getVARIABLE(toks[i+1][4:]))
             i+=2
-    #    elif toks[i] + " " + toks[i+1][0:6] + " " + toks[i+2][0:4] + " " + toks[i+3][0:3] == "PRINT STRING JOIN VAR":
-    #        print(toks[i+1][8:] + symbols[toks[i+3][4:]])
-            #print("join")
-    #    if toks[i][0:6] + " " + toks[i+1] + " " + toks[i+2][0:3] == "STRING JOIN VAR":
-    #        #if toks[i+2][0:3] == "VAR":
-    #        print("Var" + "var2")
-    #            #print(toks[i][5:] + symbols[toks[i+2][4:]])#
-    #        i+=4
-
 
 
 
